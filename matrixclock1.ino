@@ -103,6 +103,7 @@ void loop() {
   matrix.print(timeString);  // Print the time
 
   // Flashing effect on the 12th pixel (two pixels vertically)
+  //Disabled
   static bool flash = false;  // Track the flash state
   if (flash) {
     // Draw two vertically aligned pixels
@@ -120,9 +121,6 @@ int ledsToLight = map(currentSecond, 0, 59, 0, (MATRIX_WIDTH - 1));
 
 for (int x = 0; x <= ledsToLight; x++) {
   matrix.drawPixel(x, 7, matrix.Color(0, 0, 175));
-  //matrix.drawPixel(x-1, 7, matrix.Color(0, 0, 175));
-  //matrix.drawPixel(x-2, 7, matrix.Color(0, 0, 100));
-  //matrix.drawPixel(x-3, 7, matrix.Color(0, 0, 0));
 }
   // Refresh the display
   matrix.show();  
