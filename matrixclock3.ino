@@ -102,17 +102,7 @@ void loop() {
   matrix.setCursor(0, (MATRIX_HEIGHT - 8) / 2); // Center vertically
   matrix.print(timeString);  // Print the time
 
-  // Flashing effect on the 12th pixel (two pixels vertically)
-  static bool flash = false;  // Track the flash state
-  if (flash) {
-    // Draw two vertically aligned pixels
-    //matrix.drawPixel(11, 2, matrix.Color(255, 0, 0)); // Top pixel (one pixel up)
-    //matrix.drawPixel(11, 4, matrix.Color(255, 0, 0)); // Bottom pixel (original position)
-  } else {
-    // Turn off the pixels
-    matrix.drawPixel(11, 2, matrix.Color(0, 0, 0));   // Turn off top pixel
-    matrix.drawPixel(11, 4, matrix.Color(0, 0, 0));   // Turn off bottom pixel
-  }
+  
   // Bottom row led to show seconds
 int currentSecond = timeinfo.tm_sec; // Replace with your time source e.g., rtc.now().second()
 int ledsToLight = map(currentSecond, 0, 59, 0, (MATRIX_WIDTH - 1));
@@ -127,8 +117,7 @@ for (int x = 0; x <= ledsToLight; x++) {
   // Refresh the display
   matrix.show();  
 
-  // Toggle flash state
-  flash = !flash;
+  
 
   delay(500);  // Update every half second for flashing effect
 }
